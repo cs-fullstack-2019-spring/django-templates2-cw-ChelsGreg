@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>My Movies Page</h1>
+
+<h2>
+{% block subtitle %}
+
+{% endblock subtitle %}
+</h2>
+
+<!--&lt;!&ndash;TO INPUT/SYNC DETAILS TO CHILD PAGES->-->
+{% block content %}
+
+<!--TABLE FOR MOVIE LIST LINKS-->
+<table>
+    <tr>
+    <th>Movie Title</th>
+    <th>Movie Details</th>
+    <th>Movie Synopsis</th>
+    </tr>
+    {% for movie in movies %}
+    <tr>
+        <!--FOR SPECIFIC INFO TO SHOW & LINKS TO OTHER PAGES-->
+        <td>{{movie.movie_title}}</td>
+        <td><a href="{% url 'movieDetails' movie.movie_id %}">Details</a></td>
+        <td><a href="{% url 'movieSynopsis' movie.movie_id %}">Synopsis</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock content %}
+
+
+</body>
+</html>
